@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: aamon-pairsite
+    env: node
+    plan: free
+    region: frankfurt    # choose region closest to you (optional)
+    buildCommand: |
+      npm install
+    startCommand: |
+      node index.js      # or server.js if that's your main file
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+
+# Optional persistent storage (uncomment if you want auth_info saved between restarts)
+# disks:
+#   - name: auth_info
+#     mountPath: /opt/render/project/src/auth_info
+#     sizeGB: 1
